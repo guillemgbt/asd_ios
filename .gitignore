@@ -1,0 +1,12 @@
+*.xcuserstate
+*.xcuserdatad
+project.xcworkspace/
+xcuserdata/
+.DS_Store
+**/.DS_Store
+Pods/
+Podfile.lock
+*.xcworkspace
+build/
+.gitignore~
+
