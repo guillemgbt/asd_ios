@@ -15,7 +15,7 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         
         addPullUpController(PreviousAreasViewController(),
-                            initialStickyPointOffset: 120,
+                            initialStickyPointOffset: 90,
                             animated: false)
         
     }
