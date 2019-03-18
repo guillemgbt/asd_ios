@@ -53,6 +53,12 @@
 		C9BD4C732231BADA0014CC9E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BD4C722231BADA0014CC9E /* API.swift */; };
 		C9BD4C752231BB8A0014CC9E /* RequestPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BD4C742231BB8A0014CC9E /* RequestPath.swift */; };
 		C9BD4C792231BC960014CC9E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BD4C782231BC960014CC9E /* Extensions.swift */; };
+		C9EF820D223F12AB008DA9C6 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EF820B223F12AB008DA9C6 /* EventListViewController.swift */; };
+		C9EF820E223F12AB008DA9C6 /* EventListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9EF820C223F12AB008DA9C6 /* EventListViewController.xib */; };
+		C9EF8210223F12DC008DA9C6 /* EventListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EF820F223F12DC008DA9C6 /* EventListViewModel.swift */; };
+		C9EF8213223F14DF008DA9C6 /* EventRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EF8212223F14DF008DA9C6 /* EventRepo.swift */; };
+		C9EF8219223F1DA6008DA9C6 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EF8217223F1DA6008DA9C6 /* EventTableViewCell.swift */; };
+		C9EF821A223F1DA6008DA9C6 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9EF8218223F1DA6008DA9C6 /* EventTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +133,12 @@
 		C9BD4C722231BADA0014CC9E /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C9BD4C742231BB8A0014CC9E /* RequestPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestPath.swift; sourceTree = "<group>"; };
 		C9BD4C782231BC960014CC9E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		C9EF820B223F12AB008DA9C6 /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
+		C9EF820C223F12AB008DA9C6 /* EventListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventListViewController.xib; sourceTree = "<group>"; };
+		C9EF820F223F12DC008DA9C6 /* EventListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewModel.swift; sourceTree = "<group>"; };
+		C9EF8212223F14DF008DA9C6 /* EventRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRepo.swift; sourceTree = "<group>"; };
+		C9EF8217223F1DA6008DA9C6 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		C9EF8218223F1DA6008DA9C6 /* EventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
 		D0057CF90BF116AF0FF72CC3 /* Pods_ASDUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ASDUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C26309F425437249CFCF2F /* Pods-ASDTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ASDTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ASDTests/Pods-ASDTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F13743642642D11EDABB8BED /* Pods-ASD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ASD.release.xcconfig"; path = "Pods/Target Support Files/Pods-ASD/Pods-ASD.release.xcconfig"; sourceTree = "<group>"; };
@@ -191,6 +203,7 @@
 				C914F4C62230F52F001F66AF /* Navigation */,
 				C914F4C12230F4DF001F66AF /* MapView */,
 				C914F4C92230F9C4001F66AF /* PreviousAreas */,
+				C9EF820A223F1253008DA9C6 /* EventList */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -213,6 +226,7 @@
 				C94FA538223B3AB3009CBDC6 /* RequestStatus+VariableExtension.swift */,
 				C9BD4C672231B9CD0014CC9E /* Abstractions */,
 				C933C04D223C916500653744 /* AreaRepo */,
+				C9EF8211223F14B2008DA9C6 /* EventRepo */,
 			);
 			path = Repos;
 			sourceTree = "<group>";
@@ -264,8 +278,8 @@
 		C933C047223C8B2B00653744 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				C933C048223C8BC400653744 /* AreaTableViewCell.swift */,
-				C933C049223C8BC400653744 /* AreaTableViewCell.xib */,
+				C9EF8216223F1D7A008DA9C6 /* Event */,
+				C9EF8215223F1D68008DA9C6 /* Area */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -505,6 +519,42 @@
 			path = String;
 			sourceTree = "<group>";
 		};
+		C9EF820A223F1253008DA9C6 /* EventList */ = {
+			isa = PBXGroup;
+			children = (
+				C9EF820B223F12AB008DA9C6 /* EventListViewController.swift */,
+				C9EF820C223F12AB008DA9C6 /* EventListViewController.xib */,
+				C9EF820F223F12DC008DA9C6 /* EventListViewModel.swift */,
+			);
+			path = EventList;
+			sourceTree = "<group>";
+		};
+		C9EF8211223F14B2008DA9C6 /* EventRepo */ = {
+			isa = PBXGroup;
+			children = (
+				C9EF8212223F14DF008DA9C6 /* EventRepo.swift */,
+			);
+			path = EventRepo;
+			sourceTree = "<group>";
+		};
+		C9EF8215223F1D68008DA9C6 /* Area */ = {
+			isa = PBXGroup;
+			children = (
+				C933C048223C8BC400653744 /* AreaTableViewCell.swift */,
+				C933C049223C8BC400653744 /* AreaTableViewCell.xib */,
+			);
+			path = Area;
+			sourceTree = "<group>";
+		};
+		C9EF8216223F1D7A008DA9C6 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				C9EF8217223F1DA6008DA9C6 /* EventTableViewCell.swift */,
+				C9EF8218223F1DA6008DA9C6 /* EventTableViewCell.xib */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -613,9 +663,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9EF820E223F12AB008DA9C6 /* EventListViewController.xib in Resources */,
 				C933C04B223C8BC400653744 /* AreaTableViewCell.xib in Resources */,
 				C937646F2230F0360097B0A3 /* LaunchScreen.storyboard in Resources */,
 				C937646C2230F0360097B0A3 /* Assets.xcassets in Resources */,
+				C9EF821A223F1DA6008DA9C6 /* EventTableViewCell.xib in Resources */,
 				C937646A2230F0350097B0A3 /* Main.storyboard in Resources */,
 				C914F4CD2230FA18001F66AF /* PreviousAreasViewController.xib in Resources */,
 				C914F4C52230F512001F66AF /* MapViewController.xib in Resources */,
@@ -749,12 +801,15 @@
 				C9BD4C542231B6E90014CC9E /* DateOffset.swift in Sources */,
 				C9BD4C4E2231B6E90014CC9E /* TableViewExt.swift in Sources */,
 				C9BD4C732231BADA0014CC9E /* API.swift in Sources */,
+				C9EF820D223F12AB008DA9C6 /* EventListViewController.swift in Sources */,
+				C9EF8213223F14DF008DA9C6 /* EventRepo.swift in Sources */,
 				C9BD4C752231BB8A0014CC9E /* RequestPath.swift in Sources */,
 				C94FA53C223B3C5B009CBDC6 /* PreviousAreasViewModel.swift in Sources */,
 				C9BD4C4F2231B6E90014CC9E /* TableViewCell+Extensions.swift in Sources */,
 				C9BD4C522231B6E90014CC9E /* UIViewController+Extensions.swift in Sources */,
 				C914F4CC2230FA18001F66AF /* PreviousAreasViewController.swift in Sources */,
 				C9BD4C5D2231B8A80014CC9E /* Utils.swift in Sources */,
+				C9EF8210223F12DC008DA9C6 /* EventListViewModel.swift in Sources */,
 				C9BD4C572231B6E90014CC9E /* VariableExt.swift in Sources */,
 				C9BD4C6C2231BA150014CC9E /* GeneralObjectRepo.swift in Sources */,
 				C9BD4C662231B9BC0014CC9E /* BaseObject.swift in Sources */,
@@ -763,6 +818,7 @@
 				C9BD4C512231B6E90014CC9E /* URLResponse+Ext.swift in Sources */,
 				C9BD4C632231B9BC0014CC9E /* UniqueObject.swift in Sources */,
 				C9BD4C6B2231BA150014CC9E /* BaseRepo.swift in Sources */,
+				C9EF8219223F1DA6008DA9C6 /* EventTableViewCell.swift in Sources */,
 				C9BD4C552231B6E90014CC9E /* ObservableTypeExt.swift in Sources */,
 				C9BD4C6F2231BA540014CC9E /* SyncInterface.swift in Sources */,
 				C933C04A223C8BC400653744 /* AreaTableViewCell.swift in Sources */,

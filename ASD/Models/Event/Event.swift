@@ -54,4 +54,8 @@ class Event: GeneralObject {
         return "\(getCount()) matches of \(getEntity())"
     }
     
+    func getImageURL() -> URL? {
+        return URL(string: API.shared.completeImageURL(image))
+    }
+    
 }
