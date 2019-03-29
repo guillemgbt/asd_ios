@@ -11,13 +11,18 @@ import PullUpController
 import RxSwift
 import RxRealm
 
+protocol AreaPresenter: class {
+    func areaPresenter(didSelect area: Area)
+}
+
 class PreviousAreasViewController: PullUpController {
-    
     
     @IBOutlet weak var topBar: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
+    
+    weak var presenter: AreaPresenter?
     
     let bag = DisposeBag()
     
@@ -56,6 +61,7 @@ class PreviousAreasViewController: PullUpController {
         bindTitle()
         bindIsLoading()
         bindAreas()
+        bindAreaSelection()
     }
     
     private func bindTitle() {
@@ -79,7 +85,7 @@ class PreviousAreasViewController: PullUpController {
     
     private func bindAreas() {
         
-        Observable.collection( from: viewModel.areas )
+        Observable.collection(from: viewModel.areas)
             .bind(to: tableView.rx.items) {tableView, row, area in
                 
                 let cell: AreaTableViewCell = tableView.dequeueReusableCell(for: IndexPath(row: row, section: 0))
@@ -89,6 +95,22 @@ class PreviousAreasViewController: PullUpController {
             .disposed(by: bag)
     }
     
+    private func bindAreaSelection() {
+        
+        self.tableView.delegate = self
+//        Observable.collection(from: viewModel.areas).bind(to: tableView.rx.itemSelected) { _ in
+//
+//        }
+//
+    }
+    
     
 
+}
+
+extension PreviousAreasViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        presenter?.areaPresenter(didSelect: viewModel.areas[indexPath.row])
+    }
 }

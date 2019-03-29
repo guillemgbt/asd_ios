@@ -56,6 +56,8 @@ class EventRepo: GeneralObjectRepo<Event> {
             
             var events = [Event]()
             
+            print(json)
+            
             for areaJSON in json.arrayValue {
                 if let event = Event(fromJSON: areaJSON) {
                     events.append(event)

@@ -10,16 +10,11 @@ import Foundation
 import SystemConfiguration
 import SwiftyJSON
 
-typealias ServiceResponse = (JSON, NSError?) -> Void
-typealias tokenResponse = (String, NSError?)-> Void//tipus de funcio que farem servir per fer el callback del updateCSRF
 typealias onSuccesResponse = (JSON)-> Void
 typealias onSuccesResponseFull = (JSON, URLResponse?)-> Void
 typealias onSuccesResponseWithDict = (JSON, [String: AnyObject]?)-> Void
-typealias onErrorResponseWithDict = ([String: AnyObject]?)-> Void
 typealias onErrorResponseDict = (String, [ErrorDictKey: String]?)-> Void
 typealias onErrorResponse = (String)->Void
-typealias onErrorResponseWithParameter = (String, String)->Void
-typealias TaskCreatedCallback = (URLSessionDataTask) -> Void
 
 enum ErrorDictKey {
     case description
@@ -50,7 +45,7 @@ class API: NSObject {
         self.urlSession = session
         
         self.rootURL = "http://localhost:8000/"
-        self.imageRootURL = "http://localhost:8000/"
+        self.imageRootURL = "http://localhost:8000"
        
         super.init()
     }

@@ -20,11 +20,11 @@ class Event: GeneralObject {
     
     convenience init?(fromJSON json: JSON) {
         
-        guard let id = json["id"].string else {
+        guard let id = json["id"].int else {
             return nil
         }
         
-        self.init(id: id,
+        self.init(id: "\(id)",
                   entity: json["entity"].stringValue.html2String,
                   count: json["count"].intValue,
                   image: json["image"].stringValue,

@@ -14,10 +14,33 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addPullUpController(PreviousAreasViewController(),
+        presentPreviousAreasVC()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    private func presentPreviousAreasVC() {
+        
+        let vc = PreviousAreasViewController()
+        
+        vc.presenter = self
+        
+        addPullUpController(vc,
                             initialStickyPointOffset: 90,
                             animated: false)
-        
     }
 
+}
+
+extension MapViewController: AreaPresenter {
+    func areaPresenter(didSelect area: Area) {
+        
+        let vc = EventListViewController(areaID: area.getPK())
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }

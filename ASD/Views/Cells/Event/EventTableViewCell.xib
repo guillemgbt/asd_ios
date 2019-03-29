@@ -19,10 +19,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g6N-vs-Fmn">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g6N-vs-Fmn">
                         <rect key="frame" x="16" y="8" width="64" height="64"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="height" constant="64" id="TyR-Zv-J3Y"/>
                             <constraint firstAttribute="width" secondItem="g6N-vs-Fmn" secondAttribute="height" multiplier="1:1" id="Ypg-ei-LUM"/>
                         </constraints>
                     </imageView>
@@ -45,6 +46,8 @@
                     </stackView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="g6N-vs-Fmn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="4iV-8B-6gG"/>
+                    <constraint firstAttribute="bottom" secondItem="g6N-vs-Fmn" secondAttribute="bottom" constant="7.5" id="AcR-Nf-uLV"/>
                     <constraint firstItem="8FX-y9-eX7" firstAttribute="leading" secondItem="g6N-vs-Fmn" secondAttribute="trailing" constant="8" id="P9e-08-O8q"/>
                     <constraint firstItem="8FX-y9-eX7" firstAttribute="centerY" secondItem="g6N-vs-Fmn" secondAttribute="centerY" id="i3U-ay-jJN"/>
                 </constraints>
@@ -52,7 +55,6 @@
             <constraints>
                 <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="8FX-y9-eX7" secondAttribute="trailing" constant="20" id="Gv4-Un-2rM"/>
                 <constraint firstItem="g6N-vs-Fmn" firstAttribute="leading" secondItem="njF-e1-oar" secondAttribute="leading" constant="16" id="OSW-V9-XeJ"/>
-                <constraint firstItem="g6N-vs-Fmn" firstAttribute="height" secondItem="KGk-i7-Jjw" secondAttribute="height" constant="-16" id="fip-LN-ySA"/>
                 <constraint firstItem="g6N-vs-Fmn" firstAttribute="centerY" secondItem="njF-e1-oar" secondAttribute="centerY" id="obc-nC-bKF"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
