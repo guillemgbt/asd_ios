@@ -10,24 +10,26 @@ import UIKit
 import MapKit
 import PullUpController
 import CoreLocation
+import RxSwift
 
 class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     
-    let locationManager = CLLocationManager()
+    let viewModel = MapViewModel()
+    let bag = DisposeBag()
     
-    let regionInMeters: Double = 10000
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        prepareLocationManager()
+        bindView()
+        
         prepareMapView()
+        
         presentPreviousAreasVC()
         
-        checkLocationServices()
-        
+        viewModel.checkLocationServices()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,57 +38,38 @@ class MapViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    func prepareLocationManager() {
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    private func bindView() {
+        bindMapRegion()
+        bindMessage()
     }
     
-    func centerRegionOnUserLocation() {
+    private func bindMapRegion() {
         
-        mapView.showsUserLocation = true
-        
-        if let location = locationManager.location?.coordinate {
-            let region = MKCoordinateRegion(center: location,
-                                            latitudinalMeters: regionInMeters,
-                                            longitudinalMeters: regionInMeters)
-            mapView.setRegion(region, animated: true)
-        }
-        
-    }
-    
-    func checkLocationServices() {
-        if CLLocationManager.locationServicesEnabled() {
+        viewModel.mapRegion.bindInUI({ [weak self] (_region) in
             
-            prepareLocationManager()
-            checkLocationAuthorization()
+            guard let region = _region else { return }
             
-        } else {
-            displayPermissionsMessage()
-        }
+            self?.mapView.setRegion(region, animated: true)
+            
+        }, disposedBy: bag)
     }
     
-    func checkLocationAuthorization() {
+    private func bindMessage() {
         
-        switch CLLocationManager.authorizationStatus() {
-        case .denied:
-            displayPermissionsMessage()
-            break
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-            break
-        case .restricted:
-            displayPermissionsMessage()
-            break
-        default:
-            centerRegionOnUserLocation()
-        }
+        viewModel.displayingMessage.bindInUI({ [weak self] _message in
+            guard let message = _message else { return }
+            self?.showMessage(title: message.title,
+                              message: message.body)
+            
+        }, disposedBy: bag)
     }
     
     private func prepareMapView() {
-        
         mapView.delegate = self
-        
+        mapView.showsUserLocation = true
     }
+    
+    
     
     private func presentPreviousAreasVC() {
         
@@ -99,27 +82,11 @@ class MapViewController: UIViewController {
                             animated: false)
     }
     
-    private func displayPermissionsMessage() {
-        showMessage(title: "Location Services Disabled",
-                    message: "Please turn on your location services to use the app.")
-    }
+  
 
 }
 
-extension MapViewController: MKMapViewDelegate {
-    
-}
-
-extension MapViewController: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-    }
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        
-    }
-    
-}
+extension MapViewController: MKMapViewDelegate {}
 
 extension MapViewController: AreaPresenter {
     func areaPresenter(didSelect area: Area) {

@@ -53,6 +53,8 @@
 		C9BD4C732231BADA0014CC9E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BD4C722231BADA0014CC9E /* API.swift */; };
 		C9BD4C752231BB8A0014CC9E /* RequestPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BD4C742231BB8A0014CC9E /* RequestPath.swift */; };
 		C9BD4C792231BC960014CC9E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BD4C782231BC960014CC9E /* Extensions.swift */; };
+		C9E6BD4722598302009E8415 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E6BD4622598302009E8415 /* MapViewModel.swift */; };
+		C9E6BD4A2259867D009E8415 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E6BD492259867D009E8415 /* Message.swift */; };
 		C9EF820D223F12AB008DA9C6 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EF820B223F12AB008DA9C6 /* EventListViewController.swift */; };
 		C9EF820E223F12AB008DA9C6 /* EventListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9EF820C223F12AB008DA9C6 /* EventListViewController.xib */; };
 		C9EF8210223F12DC008DA9C6 /* EventListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EF820F223F12DC008DA9C6 /* EventListViewModel.swift */; };
@@ -133,6 +135,8 @@
 		C9BD4C722231BADA0014CC9E /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C9BD4C742231BB8A0014CC9E /* RequestPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestPath.swift; sourceTree = "<group>"; };
 		C9BD4C782231BC960014CC9E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		C9E6BD4622598302009E8415 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		C9E6BD492259867D009E8415 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		C9EF820B223F12AB008DA9C6 /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
 		C9EF820C223F12AB008DA9C6 /* EventListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventListViewController.xib; sourceTree = "<group>"; };
 		C9EF820F223F12DC008DA9C6 /* EventListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewModel.swift; sourceTree = "<group>"; };
@@ -211,10 +215,11 @@
 		C914F4BE2230F3E4001F66AF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C9BD4C5E2231B9910014CC9E /* Abstractions */,
 				C933C041223C844600653744 /* Event */,
 				C94FA53D223B3CE7009CBDC6 /* Area */,
 				C9BD4C762231BB9A0014CC9E /* RequestPath */,
-				C9BD4C5E2231B9910014CC9E /* Abstractions */,
+				C9E6BD4822598660009E8415 /* Message */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -243,6 +248,7 @@
 		C914F4C12230F4DF001F66AF /* MapView */ = {
 			isa = PBXGroup;
 			children = (
+				C9E6BD4622598302009E8415 /* MapViewModel.swift */,
 				C914F4C22230F512001F66AF /* MapViewController.swift */,
 				C914F4C32230F512001F66AF /* MapViewController.xib */,
 			);
@@ -517,6 +523,14 @@
 			children = (
 			);
 			path = String;
+			sourceTree = "<group>";
+		};
+		C9E6BD4822598660009E8415 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				C9E6BD492259867D009E8415 /* Message.swift */,
+			);
+			path = Message;
 			sourceTree = "<group>";
 		};
 		C9EF820A223F1253008DA9C6 /* EventList */ = {
@@ -807,6 +821,7 @@
 				C94FA53C223B3C5B009CBDC6 /* PreviousAreasViewModel.swift in Sources */,
 				C9BD4C4F2231B6E90014CC9E /* TableViewCell+Extensions.swift in Sources */,
 				C9BD4C522231B6E90014CC9E /* UIViewController+Extensions.swift in Sources */,
+				C9E6BD4A2259867D009E8415 /* Message.swift in Sources */,
 				C914F4CC2230FA18001F66AF /* PreviousAreasViewController.swift in Sources */,
 				C9BD4C5D2231B8A80014CC9E /* Utils.swift in Sources */,
 				C9EF8210223F12DC008DA9C6 /* EventListViewModel.swift in Sources */,
@@ -819,6 +834,7 @@
 				C9BD4C632231B9BC0014CC9E /* UniqueObject.swift in Sources */,
 				C9BD4C6B2231BA150014CC9E /* BaseRepo.swift in Sources */,
 				C9EF8219223F1DA6008DA9C6 /* EventTableViewCell.swift in Sources */,
+				C9E6BD4722598302009E8415 /* MapViewModel.swift in Sources */,
 				C9BD4C552231B6E90014CC9E /* ObservableTypeExt.swift in Sources */,
 				C9BD4C6F2231BA540014CC9E /* SyncInterface.swift in Sources */,
 				C933C04A223C8BC400653744 /* AreaTableViewCell.swift in Sources */,
