@@ -68,6 +68,10 @@ class MapViewModel: NSObject {
         
     }
     
+    func removeAnnotation() {
+        currentAnotation.value = nil
+    }
+    
     func handleLongPress(gesture: UIGestureRecognizer, in mapView: MKMapView) {
         
         guard gesture.state == .began else { return }

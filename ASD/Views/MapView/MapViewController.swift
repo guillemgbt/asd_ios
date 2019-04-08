@@ -69,9 +69,9 @@ class MapViewController: UIViewController {
         
         viewModel.currentAnotation.bindInUI({ [weak self] (_annotation) in
             
-            guard let annotation = _annotation else { return }
-            
             self?.mapView.removePointAnnotations()
+            
+            guard let annotation = _annotation else { return }
             self?.mapView.addAnnotation(annotation)
             self?.mapView.selectAnnotation(annotation, animated: true)
             
@@ -120,7 +120,12 @@ class MapViewController: UIViewController {
 
 }
 
-extension MapViewController: MKMapViewDelegate {}
+extension MapViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        viewModel.removeAnnotation()
+    }
+}
 
 extension MapViewController: AreaPresenter {
     func areaPresenter(didSelect area: Area) {
