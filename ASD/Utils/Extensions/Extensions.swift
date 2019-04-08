@@ -327,6 +327,28 @@ extension UIImage {
 
 extension UIViewController{
     
+    func showTextFieldAlert(title: String, subtitle: String, placeholder: String, onCompletion: @escaping (String)->()) {
+        
+        let alert = UIAlertController(title: title,
+                                      message: subtitle,
+                                      preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            textField.text = placeholder
+        }
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            guard let text = alert?.textFields?.first?.text, !text.isEmpty else { return }
+            
+            onCompletion(text)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
     func showMessage(title: String, message: String, actions: [UIAlertAction]) {
         DispatchQueue.main.async(execute: {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)

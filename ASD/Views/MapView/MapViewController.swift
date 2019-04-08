@@ -15,6 +15,10 @@ import RxSwift
 class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var createNewAreaView: UIView!
+    @IBOutlet weak var createNewAreaButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     
     let viewModel = MapViewModel()
     let bag = DisposeBag()
@@ -36,6 +40,12 @@ class MapViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        createNewAreaButton.makeCircular()
     }
     
     private func bindView() {
@@ -70,6 +80,7 @@ class MapViewController: UIViewController {
         viewModel.currentAnotation.bindInUI({ [weak self] (_annotation) in
             
             self?.mapView.removePointAnnotations()
+            self?.showCreateAreaButton(show: _annotation != nil)
             
             guard let annotation = _annotation else { return }
             self?.mapView.addAnnotation(annotation)
@@ -82,6 +93,8 @@ class MapViewController: UIViewController {
     private func prepareMapView() {
         mapView.delegate = self
         mapView.showsUserLocation = true
+        
+        createNewAreaView.isHidden = true
         
         setLongPressOnMap()
     }
@@ -99,10 +112,12 @@ class MapViewController: UIViewController {
     @objc func didLongPressOnMap(gestureRegognizer: UIGestureRecognizer) {
         
         viewModel.handleLongPress(gesture: gestureRegognizer, in: mapView)
-        
     }
     
     
+    @IBAction func createAreaButtonAction(_ sender: Any) {
+        presentTextFieldAlert()
+    }
     
     private func presentPreviousAreasVC() {
         
@@ -115,9 +130,26 @@ class MapViewController: UIViewController {
                             animated: false)
     }
     
+    private func presentTextFieldAlert() {
+        
+        showTextFieldAlert(title: "New Area Title",
+                           subtitle: "Set a descriptive name for the area you want to scan.",
+                           placeholder: "New Area") { (text) in
+                        
+                            Utils.printDebug(sender: self, message: text)
+        }        
+    }
     
-  
-
+    private func showCreateAreaButton(show: Bool) {
+        
+        if show { createNewAreaView.isHidden = false}
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.createNewAreaView.alpha = show ? 1 : 0
+        }) { (_) in
+            self.createNewAreaView.isHidden = !show
+        }
+    }
 }
 
 extension MapViewController: MKMapViewDelegate {
