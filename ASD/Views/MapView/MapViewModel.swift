@@ -14,6 +14,7 @@ class MapViewModel: NSObject {
     
     let mapRegion: Variable<MKCoordinateRegion?> = Variable(nil)
     let displayingMessage: Variable<Message?> = Variable(nil)
+    let currentAnotation: Variable<MKPointAnnotation?> = Variable(nil)
     
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 1000
@@ -67,6 +68,29 @@ class MapViewModel: NSObject {
         
     }
     
+    func handleLongPress(gesture: UIGestureRecognizer, in mapView: MKMapView) {
+        
+        guard gesture.state == .began else { return }
+        
+        let pinCoordinates = mapView.coodrinates(from: gesture)
+        
+        Utils.printDebug(sender: self, message: "Setting new Pin: \(pinCoordinates.latitude) - \(pinCoordinates.longitude)")
+        
+        setNewAnnotation(coordinates: pinCoordinates, title: "New Area Center")
+    }
+    
+    private func setNewAnnotation(coordinates: CLLocationCoordinate2D, title: String) {
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinates
+        annotation.title = title
+        annotation.subtitle = "\(coordinates.latitude) - \(coordinates.longitude)"
+        
+        currentAnotation.value = annotation
+    }
+    
+
+    
     private func displayPermissionsMessage() {
         displayingMessage.value = Message(title: "Location Services Disabled",
                                           body: "Please turn on your location services to use the app.")
@@ -81,4 +105,5 @@ extension MapViewModel: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
     }
+    
 }

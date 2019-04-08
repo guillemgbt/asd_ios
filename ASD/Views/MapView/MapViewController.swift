@@ -41,6 +41,7 @@ class MapViewController: UIViewController {
     private func bindView() {
         bindMapRegion()
         bindMessage()
+        bindNewAnnotation()
     }
     
     private func bindMapRegion() {
@@ -64,9 +65,41 @@ class MapViewController: UIViewController {
         }, disposedBy: bag)
     }
     
+    private func bindNewAnnotation() {
+        
+        viewModel.currentAnotation.bindInUI({ [weak self] (_annotation) in
+            
+            guard let annotation = _annotation else { return }
+            
+            self?.mapView.removePointAnnotations()
+            self?.mapView.addAnnotation(annotation)
+            self?.mapView.selectAnnotation(annotation, animated: true)
+            
+        }, disposedBy: bag)
+        
+    }
+    
     private func prepareMapView() {
         mapView.delegate = self
         mapView.showsUserLocation = true
+        
+        setLongPressOnMap()
+    }
+    
+    private func setLongPressOnMap() {
+        
+        let gesture = UILongPressGestureRecognizer(target: self,
+                                                   action: #selector(didLongPressOnMap(gestureRegognizer:)))
+        
+        gesture.minimumPressDuration = 1.0
+        
+        mapView.addGestureRecognizer(gesture)
+    }
+    
+    @objc func didLongPressOnMap(gestureRegognizer: UIGestureRecognizer) {
+        
+        viewModel.handleLongPress(gesture: gestureRegognizer, in: mapView)
+        
     }
     
     
@@ -81,6 +114,7 @@ class MapViewController: UIViewController {
                             initialStickyPointOffset: 90,
                             animated: false)
     }
+    
     
   
 

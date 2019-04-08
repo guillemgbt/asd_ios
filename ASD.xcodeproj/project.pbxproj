@@ -55,6 +55,7 @@
 		C9BD4C792231BC960014CC9E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BD4C782231BC960014CC9E /* Extensions.swift */; };
 		C9E6BD4722598302009E8415 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E6BD4622598302009E8415 /* MapViewModel.swift */; };
 		C9E6BD4A2259867D009E8415 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E6BD492259867D009E8415 /* Message.swift */; };
+		C9E6BD4C2259CB2D009E8415 /* MapViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E6BD4B2259CB2D009E8415 /* MapViewExt.swift */; };
 		C9EF820D223F12AB008DA9C6 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EF820B223F12AB008DA9C6 /* EventListViewController.swift */; };
 		C9EF820E223F12AB008DA9C6 /* EventListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9EF820C223F12AB008DA9C6 /* EventListViewController.xib */; };
 		C9EF8210223F12DC008DA9C6 /* EventListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EF820F223F12DC008DA9C6 /* EventListViewModel.swift */; };
@@ -137,6 +138,7 @@
 		C9BD4C782231BC960014CC9E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C9E6BD4622598302009E8415 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		C9E6BD492259867D009E8415 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		C9E6BD4B2259CB2D009E8415 /* MapViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewExt.swift; sourceTree = "<group>"; };
 		C9EF820B223F12AB008DA9C6 /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
 		C9EF820C223F12AB008DA9C6 /* EventListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventListViewController.xib; sourceTree = "<group>"; };
 		C9EF820F223F12DC008DA9C6 /* EventListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewModel.swift; sourceTree = "<group>"; };
@@ -375,7 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				C9BD4C782231BC960014CC9E /* Extensions.swift */,
-				C9BD4C772231BC410014CC9E /* String */,
+				C9BD4C772231BC410014CC9E /* MapView */,
 				C9BD4C5B2231B7380014CC9E /* JSON */,
 				C9BD4C3F2231B6E80014CC9E /* Array */,
 				C9BD4C4C2231B6E90014CC9E /* CollectionView */,
@@ -518,11 +520,12 @@
 			path = RequestPath;
 			sourceTree = "<group>";
 		};
-		C9BD4C772231BC410014CC9E /* String */ = {
+		C9BD4C772231BC410014CC9E /* MapView */ = {
 			isa = PBXGroup;
 			children = (
+				C9E6BD4B2259CB2D009E8415 /* MapViewExt.swift */,
 			);
-			path = String;
+			path = MapView;
 			sourceTree = "<group>";
 		};
 		C9E6BD4822598660009E8415 /* Message */ = {
@@ -837,6 +840,7 @@
 				C9E6BD4722598302009E8415 /* MapViewModel.swift in Sources */,
 				C9BD4C552231B6E90014CC9E /* ObservableTypeExt.swift in Sources */,
 				C9BD4C6F2231BA540014CC9E /* SyncInterface.swift in Sources */,
+				C9E6BD4C2259CB2D009E8415 /* MapViewExt.swift in Sources */,
 				C933C04A223C8BC400653744 /* AreaTableViewCell.swift in Sources */,
 				C93764652230F0350097B0A3 /* AppDelegate.swift in Sources */,
 				C9BD4C562231B6E90014CC9E /* RealmExt.swift in Sources */,
