@@ -23,7 +23,7 @@ class PreviousAreasViewModel: NSObject {
     
     init(areaRepo: AreaRepo = AreaRepo.shared) {
         self.areaRepo = areaRepo
-        self.areas = areaRepo.getObjectResults()
+        self.areas = areaRepo.getSortedObjectResults()
         super.init()
         
         bindRequestState()

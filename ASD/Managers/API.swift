@@ -109,6 +109,7 @@ class API: NSObject {
         
         var request = URLRequest(url: completeURL(path))
         request.setValue(self.rootURL, forHTTPHeaderField: "Referer")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.httpMethod = "POST"
         request.httpBody = data

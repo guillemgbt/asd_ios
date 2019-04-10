@@ -23,7 +23,7 @@ class EventTableViewCell: UITableViewCell, NibLoadableView {
     func set(with event: Event) {
         eventImageView.loadImage(withURL: event.getImageURL())
         titleLabel.text = event.getEntityDescription()
-        auxLabel.text = "\(event.created)"
+        auxLabel.text = event.created.formatToHHdMMMYYYYSS()
     }
 
    

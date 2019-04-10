@@ -53,8 +53,17 @@ class GeneralObjectRepo<T: GeneralObject>: BaseRepo {
         return realm.objects(T.self)
     }
     
+    func getSortedObjectResults() -> Results<T> {
+        let realm = try! Realm()
+        return realm.objects(T.self).sorted(byKeyPath: "created", ascending: false)
+    }
+    
     func getObjectResults(filteredBy predicate: NSPredicate) -> Results<T> {
         return getObjectResults().filter(predicate)
+    }
+    
+    func getSortedObjectResults(filteredBy predicate: NSPredicate) -> Results<T> {
+        return getSortedObjectResults().filter(predicate)
     }
     
     func deleteAllStored() {

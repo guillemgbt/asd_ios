@@ -15,7 +15,6 @@ class Area: GeneralObject {
     @objc dynamic var center_latitude: Double = 0
     @objc dynamic var center_longitude: Double = 0
     @objc dynamic var radius: Double = 0
-    @objc dynamic var created: Double = 0
     
     convenience init?(fromJSON json: JSON) {
         
@@ -28,17 +27,16 @@ class Area: GeneralObject {
                   center_latitude: json["center_latitude"].doubleValue,
                   center_longitude: json["center_longitude"].doubleValue,
                   radius: json["radius"].doubleValue,
-                  created: json["created"].doubleValue)
+                  created: json["created"].stringValue.toDate() ?? Date())
     }
     
-    convenience init(id: String, title: String, center_latitude: Double, center_longitude: Double, radius: Double, created: Double) {
+    convenience init(id: String, title: String, center_latitude: Double, center_longitude: Double, radius: Double, created: Date) {
         
-        self.init(pk: id)
+        self.init(pk: id, created: created)
         self.title = title
         self.center_latitude = center_latitude
         self.center_longitude = center_longitude
         self.radius = radius
-        self.created = created
     }
     
     @objc func getTitle() -> String {

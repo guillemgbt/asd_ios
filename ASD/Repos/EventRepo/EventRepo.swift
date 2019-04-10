@@ -25,6 +25,11 @@ class EventRepo: GeneralObjectRepo<Event> {
         return getObjectResults(filteredBy: areaPredicate)
     }
     
+    func getSortdEvents(for areaID: String) -> Results<Event> {
+        let areaPredicate = NSPredicate(format: "area_id == %@", areaID)
+        return getSortedObjectResults(filteredBy: areaPredicate)
+    }
+    
     override func fetch(withKey key: String, toUpdate networkObject: Variable<NetworkObject<Event>?>) {
         
         networkObject.update(withNetworkStatus: .loading)

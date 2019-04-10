@@ -14,9 +14,7 @@ class Event: GeneralObject {
     @objc dynamic var entity: String = ""
     @objc dynamic var count: Int = 0
     @objc dynamic var image: String = ""
-    @objc dynamic var area_id: String = ""
-    @objc dynamic var created: Double = 0
-    
+    @objc dynamic var area_id: String = ""    
     
     convenience init?(fromJSON json: JSON) {
         
@@ -29,17 +27,16 @@ class Event: GeneralObject {
                   count: json["count"].intValue,
                   image: json["image"].stringValue,
                   area_id: json["area_id"].stringValue,
-                  created: json["created"].doubleValue)
+                  created: json["created"].stringValue.toDate() ?? Date())
     }
     
-    convenience init(id: String, entity: String, count: Int, image: String, area_id: String, created: Double) {
+    convenience init(id: String, entity: String, count: Int, image: String, area_id: String, created: Date) {
         
-        self.init(pk: id)
+        self.init(pk: id, created: created)
         self.entity = entity
         self.count = count
         self.image = image
         self.area_id = area_id
-        self.created = created
     }
     
     @objc func getEntity() -> String {

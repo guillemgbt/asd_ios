@@ -67,22 +67,17 @@ class AreaRepo: GeneralObjectRepo<Area> {
     func registerArea(name: String, center: CLLocationCoordinate2D, state: Variable<NetworkRequestState>) {
 
         let data = ["title" : name,
-                    "center_latitude" : Float(center.latitude.rounded(toPlaces: 6)),
-                    "center_longitude" : Float(center.longitude.rounded(toPlaces: 6)),
-                    "radius" : 10] as [String : AnyObject]
-        
-//        let data = ["center_latitude" : Decimal(-207.123456),
-//                    "center_longitude" : Decimal(-207.123456),
-//                    "radius" : 10] as [String : Any]
-        
+                    "center_latitude" : "\(center.latitude)",
+                    "center_longitude" : "\(center.longitude)",
+                    "radius" : 10] as [String : Any]
+
         state.value = .loading
         
         api.post(requestPath: RequestPath(path: "areas/"), dataDict: data, onSucces: { (json, _) in
             
             if let area = Area(fromJSON: json) {
-                Utils.printDebug(sender: self, message: area.getLoactionDescription())
+                self.updateStored(object: area)
             }
-            
             
             state.value = .success
             

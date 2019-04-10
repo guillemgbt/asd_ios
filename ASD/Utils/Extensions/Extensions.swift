@@ -49,6 +49,12 @@ extension UIViewController{
 
 extension String {
     
+    func toDate() -> Date? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        return formatter.date(from: self)
+    }
+    
     var html2AttributedString: NSAttributedString? {
         guard let data = data(using: .utf8) else { return nil }
         do {
