@@ -28,7 +28,7 @@ class EventListViewModel: NSObject {
     init(areaID: String, eventRepo: EventRepo = EventRepo.shared) {
         self.areaID = areaID
         self.eventRepo = eventRepo
-        self.events = eventRepo.getEvents(for: areaID)
+        self.events = eventRepo.getSortdEvents(for: areaID)
         super.init()
         
         bindAreaNetworkObject()
