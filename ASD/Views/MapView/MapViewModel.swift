@@ -16,10 +16,42 @@ class MapViewModel: NSObject {
     let displayingMessage: Variable<Message?> = Variable(nil)
     let currentAnotation: Variable<MKPointAnnotation?> = Variable(nil)
     let registrationState: Variable<NetworkRequestState> = Variable(.initial)
+    let isRegistering: Variable<Bool> = Variable(false)
+    let registerButtonTitle: Variable<String> = Variable("Register New Area")
+
+    
     
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 1000
     
+    let bag = DisposeBag()
+    
+    
+    override init() {
+        super.init()
+        bindRegisterAreaState()
+    }
+    
+    private func bindRegisterAreaState() {
+        
+        registrationState.bind({ [weak self] (state) in
+            
+            guard state != .initial else { return }
+            
+            self?.isRegistering.value = state == .loading
+            self?.registerButtonTitle.value = (state == .loading) ? "" : "Register New Area"
+            
+            if state == .success {
+                self?.removeCurrentAnnotation()
+            }
+            
+        }, disposedBy: bag)
+        
+    }
+    
+    private func removeCurrentAnnotation() {
+        currentAnotation.value = nil
+    }
     
     
     func checkLocationServices() {

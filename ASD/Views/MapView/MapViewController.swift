@@ -52,6 +52,8 @@ class MapViewController: UIViewController {
         bindMapRegion()
         bindMessage()
         bindNewAnnotation()
+        bindIsRegistering()
+        bindButtonTitle()
     }
     
     private func bindMapRegion() {
@@ -85,6 +87,27 @@ class MapViewController: UIViewController {
             guard let annotation = _annotation else { return }
             self?.mapView.addAnnotation(annotation)
             self?.mapView.selectAnnotation(annotation, animated: true)
+            
+        }, disposedBy: bag)
+        
+    }
+    
+    private func bindIsRegistering() {
+        
+        
+        viewModel.isRegistering.bindInUI({ [weak self] (isRegistering) in
+            
+            isRegistering ? self?.activityIndicator.startAnimating() : self?.activityIndicator.stopAnimating()
+            
+        }, disposedBy: bag)
+        
+    }
+    
+    private func bindButtonTitle() {
+        
+        viewModel.registerButtonTitle.bindInUI({ [weak self] (title) in
+            
+            self?.createNewAreaButton.setTitle(title, for: .normal)
             
         }, disposedBy: bag)
         
