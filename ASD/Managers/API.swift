@@ -105,21 +105,19 @@ class API: NSObject {
     }
     
     
-    private func postRequest(for path: String, data: String) -> URLRequest {
+    private func postRequest(for path: String, data: Data) -> URLRequest {
         
         var request = URLRequest(url: completeURL(path))
         request.setValue(self.rootURL, forHTTPHeaderField: "Referer")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.httpMethod = "POST"
-        request.httpBody = data.data(using: String.Encoding.utf8)
+        request.httpBody = data
         return request
     }
     
-    func makeHTTPPostRequest(_ requestPath: RequestPath, data: String, onSuccess: @escaping onSuccesResponseFull, onError: @escaping onErrorResponseDict) -> URLSessionDataTask?{
+    func makeHTTPPostRequest(_ requestPath: RequestPath, data: Data, onSuccess: @escaping onSuccesResponseFull, onError: @escaping onErrorResponseDict) -> URLSessionDataTask?{
         
-        
-        let params = data
-        let request = postRequest(for: requestPath.path, data: params)
+        let request = postRequest(for: requestPath.path, data: data)
         
         let task = urlSession.dataTask(with: request, completionHandler: { data, response, error -> Void in
             
@@ -216,7 +214,7 @@ class API: NSObject {
     @discardableResult
     func post(requestPath: RequestPath, dataDict: [String: Any], onSucces: @escaping onSuccesResponseWithDict, onError: @escaping onErrorResponseDict)->URLSessionDataTask?{
         
-        if let data = JSON(dataDict).rawString() {
+        if let data = try? JSONSerialization.data(withJSONObject: dataDict) {
             
             Utils.printDebug(sender: self, message: data)
             

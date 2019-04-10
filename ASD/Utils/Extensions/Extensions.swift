@@ -10,6 +10,7 @@ import UIKit
 import Kingfisher
 import SwiftyJSON
 
+
 extension Double {
     /// Rounds the double to decimal places value
     func rounded(toPlaces places:Int) -> Double {
