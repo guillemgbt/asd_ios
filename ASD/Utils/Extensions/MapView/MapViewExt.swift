@@ -25,3 +25,20 @@ extension MKMapView {
     }
     
 }
+
+extension CLLocationDegrees {
+    
+    func truncate(to decimalDigits: Double) -> Double {
+        
+        var value = self
+        Utils.printDebug(tag: "COORD", message: value)
+        value *= pow(10.0, decimalDigits)
+        Utils.printDebug(tag: "COORD", message: value)
+        value.round()
+        Utils.printDebug(tag: "COORD", message: value)
+        value /= pow(10.0, decimalDigits)
+        Utils.printDebug(tag: "COORD", message: value)
+        return value
+    }
+    
+}

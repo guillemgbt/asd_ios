@@ -167,6 +167,10 @@ class API: NSObject {
     
     private func handleTaskResponse(requestPath: RequestPath, onSuccess: @escaping onSuccesResponseFull, onError: @escaping onErrorResponseDict, _error: Error?, response: URLResponse?, _data: Data?) {
         
+        if _data != nil, let json = JSON(uncheckedData: _data!) {
+            print(json)
+        }
+        
         if let error = _error {
             
             if (error as NSError).code == NSURLErrorCancelled {
@@ -186,6 +190,7 @@ class API: NSObject {
         if !(response?.isSuccessCode() ?? true) {
             onError("Error code \(response?.statusCode() ?? -1)",
                 [ErrorDictKey.code : "request_failure"])
+            return
         }
         
         guard let data = _data, let json = JSON(uncheckedData: data) else {
@@ -209,9 +214,12 @@ class API: NSObject {
     
     
     @discardableResult
-    func post(requestPath: RequestPath, dataDict: [String: AnyObject], onSucces: @escaping onSuccesResponseWithDict, onError: @escaping onErrorResponseDict)->URLSessionDataTask?{
+    func post(requestPath: RequestPath, dataDict: [String: Any], onSucces: @escaping onSuccesResponseWithDict, onError: @escaping onErrorResponseDict)->URLSessionDataTask?{
         
-        if let data = JSON(dataDict).rawString(){
+        if let data = JSON(dataDict).rawString() {
+            
+            Utils.printDebug(sender: self, message: data)
+            
             let task = self.makeHTTPPostRequest(requestPath, data: data, onSuccess: { (json, response) -> Void in
                 
                 if let error = json["error"].string {

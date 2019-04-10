@@ -16,12 +16,14 @@ class EventListViewModel: NSObject {
     
     let title: Variable<String> = Variable("Events")
     let isLoading: Variable<Bool> = Variable(false)
+    let isScanning: Variable<Bool> = Variable(false)
     let requestState: Variable<NetworkRequestState> = Variable(.initial)
     let areaID: String
     var areaNetworkObject: Variable<NetworkObject<Area>?> = Variable(nil)
     let events: Results<Event>
     
     let bag = DisposeBag()
+    private var timer = Timer()
     
     init(areaID: String, eventRepo: EventRepo = EventRepo.shared) {
         self.areaID = areaID
@@ -56,5 +58,23 @@ class EventListViewModel: NSObject {
             self?.isLoading.value = (state == .loading)
             
         }, disposedBy: bag)
+    }
+    
+    func handleScanAction() {
+        isScanning.value = !isScanning.value
+        
+        isScanning.value ? startTimer() : stopTimer()
+    }
+    
+    private func startTimer() {
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { [weak self] (_) in
+            self?.fetchEvents()
+        })
+        
+    }
+    
+    private func stopTimer() {
+        timer.invalidate()
     }
 }

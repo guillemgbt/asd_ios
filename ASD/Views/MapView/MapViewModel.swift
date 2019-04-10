@@ -15,6 +15,7 @@ class MapViewModel: NSObject {
     let mapRegion: Variable<MKCoordinateRegion?> = Variable(nil)
     let displayingMessage: Variable<Message?> = Variable(nil)
     let currentAnotation: Variable<MKPointAnnotation?> = Variable(nil)
+    let registrationState: Variable<NetworkRequestState> = Variable(.initial)
     
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 1000
@@ -81,6 +82,17 @@ class MapViewModel: NSObject {
         Utils.printDebug(sender: self, message: "Setting new Pin: \(pinCoordinates.latitude) - \(pinCoordinates.longitude)")
         
         setNewAnnotation(coordinates: pinCoordinates, title: "New Area Center")
+    }
+    
+    func handleNewArea(name: String) {
+        
+        guard let center = currentAnotation.value else { return }
+        
+        AreaRepo.shared.registerArea(name: name,
+                                     center: center.coordinate,
+                                     state: registrationState)
+        
+        
     }
     
     private func setNewAnnotation(coordinates: CLLocationCoordinate2D, title: String) {

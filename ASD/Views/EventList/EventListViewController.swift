@@ -14,6 +14,8 @@ class EventListViewController: UIViewController {
 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var scanButton: UIButton!
+    @IBOutlet weak var controlsStackView: UIStackView!
     
     let viewModel: EventListViewModel
     let bag = DisposeBag()
@@ -45,9 +47,16 @@ class EventListViewController: UIViewController {
         setNavigationBar()
     }
     
+    
+    @IBAction func scanButtonAction(_ sender: Any) {
+        
+        viewModel.handleScanAction()
+    }
+    
     func setNavigatoinItems() {
         
-        let item = UIBarButtonItem(customView: activityIndicator)
+        let item = UIBarButtonItem(customView: controlsStackView)
+                
         self.navigationItem.setRightBarButton(item, animated: false)
     }
     
@@ -81,6 +90,7 @@ class EventListViewController: UIViewController {
     private func bindView() {
         
         bindTitle()
+        bindIsScanning()
         bindIsLoading()
         bindEvents()
     }
@@ -90,6 +100,15 @@ class EventListViewController: UIViewController {
         viewModel.title.bindInUI({ [weak self] (title) in
             
             self?.title = title
+            
+        }, disposedBy: bag)
+    }
+    
+    private func bindIsScanning() {
+        
+        viewModel.isScanning.bindInUI({ [weak self] (isScanning) in
+            
+            self?.scanButton.setTitle(isScanning ? "Stop" : "Scan", for: .normal)
             
         }, disposedBy: bag)
     }

@@ -137,7 +137,8 @@ class MapViewController: UIViewController {
                            placeholder: "New Area") { (text) in
                         
                             Utils.printDebug(sender: self, message: text)
-        }        
+                            self.viewModel.handleNewArea(name: text)
+        }
     }
     
     private func showCreateAreaButton(show: Bool) {

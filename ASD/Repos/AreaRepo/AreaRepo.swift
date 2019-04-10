@@ -9,6 +9,7 @@
 import RealmSwift
 import SwiftyJSON
 import RxSwift
+import CoreLocation
 
 class AreaRepo: GeneralObjectRepo<Area> {
     
@@ -60,6 +61,35 @@ class AreaRepo: GeneralObjectRepo<Area> {
             networkState.value = .error
         }
         
+        
+    }
+    
+    func registerArea(name: String, center: CLLocationCoordinate2D, state: Variable<NetworkRequestState>) {
+
+//        let data = ["title" : name,
+//                    "center_latitude" : Float(center.latitude.rounded(toPlaces: 6)),
+//                    "center_longitude" : Float(center.longitude.rounded(toPlaces: 6)),
+//                    "radius" : 10] as [String : AnyObject]
+        
+        let data = ["center_latitude" : Decimal(-207.123456),
+                    "center_longitude" : Decimal(-207.123456),
+                    "radius" : 10] as [String : Any]
+        
+        state.value = .loading
+        
+        api.post(requestPath: RequestPath(path: "areas/"), dataDict: data, onSucces: { (json, _) in
+            
+            if let area = Area(fromJSON: json) {
+                Utils.printDebug(sender: self, message: area.getLoactionDescription())
+            }
+            
+            
+            state.value = .success
+            
+        }) { (description, dict) in
+            
+            state.value = .error
+        }
         
     }
 
