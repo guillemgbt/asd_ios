@@ -19,7 +19,7 @@ class AreaRepo: GeneralObjectRepo<Area> {
         
         networkObject.update(withNetworkStatus: .loading)
         
-        api.get(requestPath: RequestPath(path: "areas/\(key)/"), onSuccess: { (json) in
+        api.get(requestPath: RequestPath(path: "area/\(key)/"), onSuccess: { (json) in
             
             guard let area = Area(fromJSON: json) else {
                 Utils.printDebug(sender: self, message: "Could not parse area JSON")

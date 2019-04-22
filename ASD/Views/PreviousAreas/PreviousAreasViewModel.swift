@@ -14,7 +14,7 @@ class PreviousAreasViewModel: NSObject {
     
     let areaRepo: AreaRepo
     
-    let title: Variable<String> = Variable("Previous Areas")
+    let title: Variable<String> = Variable("Registered Areas")
     let isLoading: Variable<Bool> = Variable(false)
     let requestState: Variable<NetworkRequestState> = Variable(.initial)
     let areas: Results<Area>

@@ -34,7 +34,7 @@ class EventRepo: GeneralObjectRepo<Event> {
         
         networkObject.update(withNetworkStatus: .loading)
         
-        api.get(requestPath: RequestPath(path: "events/\(key)/"), onSuccess: { (json) in
+        api.get(requestPath: RequestPath(path: "event/\(key)/"), onSuccess: { (json) in
             
             guard let event = Event(fromJSON: json) else {
                 Utils.printDebug(sender: self, message: "Could not parse event JSON")
@@ -57,7 +57,7 @@ class EventRepo: GeneralObjectRepo<Event> {
         
         networkState.value = .loading
         
-        api.get(requestPath: RequestPath(path: "areas/\(key)/events/"), onSuccess: { (json) in
+        api.get(requestPath: RequestPath(path: "events/areas/\(key)/"), onSuccess: { (json) in
             
             var events = [Event]()
             
