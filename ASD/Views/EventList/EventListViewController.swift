@@ -84,15 +84,16 @@ class EventListViewController: UIViewController {
     }
     
     @objc func onRefreshAction() {
-        viewModel.fetchEvents()
+        viewModel.handleRefresh()
     }
     
     private func bindView() {
         
         bindTitle()
-        bindIsScanning()
         bindIsLoading()
         bindEvents()
+        bindButtonText()
+        bindButtonEnabled()
     }
     
     private func bindTitle() {
@@ -104,14 +105,25 @@ class EventListViewController: UIViewController {
         }, disposedBy: bag)
     }
     
-    private func bindIsScanning() {
+    private func bindButtonText() {
         
-        viewModel.isScanning.bindInUI({ [weak self] (isScanning) in
+        viewModel.buttonText.bindInUI({ [weak self] (text) in
             
-            self?.scanButton.setTitle(isScanning ? "Stop" : "Scan", for: .normal)
+            self?.scanButton.setTitle(text, for: .normal)
             
         }, disposedBy: bag)
     }
+    
+    private func bindButtonEnabled() {
+        
+        viewModel.scanButtonEnabled.bindInUI({ [weak self] (enabled) in
+            
+            self?.scanButton.isEnabled = enabled
+            self?.scanButton.setTitleColor(enabled ? UIColor.blue : UIColor.lightGray, for: .normal)
+            
+        }, disposedBy: bag)
+    }
+    
     
     private func bindIsLoading() {
         viewModel.isLoading.bindInUI({ [weak self] (isLoading) in
