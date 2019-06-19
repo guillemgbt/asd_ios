@@ -57,7 +57,7 @@ class EventRepo: GeneralObjectRepo<Event> {
         
         networkState.value = .loading
         
-        api.get(requestPath: RequestPath(path: "events/areas/\(key)/"), onSuccess: { (json) in
+        api.get(requestPath: RequestPath(path: "area/\(key)/events/"), onSuccess: { (json) in
             
             var events = [Event]()
             

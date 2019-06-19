@@ -52,7 +52,7 @@ class FlightControlRepo: UniqueObjectRepo<FlightControl> {
         
         networkState?.value = .loading
         
-        api.get(requestPath: RequestPath(path: "start/\(areaID)/area/"), onSuccess: { (json) in
+        api.get(requestPath: RequestPath(path: "area/\(areaID)/start/"), onSuccess: { (json) in
             
             print(json)
             
@@ -78,7 +78,7 @@ class FlightControlRepo: UniqueObjectRepo<FlightControl> {
         
         networkState?.value = .loading
         
-        api.get(requestPath: RequestPath(path: "stop/area/"), onSuccess: { (json) in
+        api.get(requestPath: RequestPath(path: "area/stop/"), onSuccess: { (json) in
             
             print(json)
             
