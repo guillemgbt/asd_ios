@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EventDetailViewController" customModule="ASD" customModuleProvider="target">
+            <connections>
+                <outlet property="descriptionLabel" destination="SOb-we-bRc" id="6WF-BF-FFc"/>
+                <outlet property="imageView" destination="kCQ-xa-BRF" id="XXS-QP-5Nq"/>
+                <outlet property="scrollView" destination="Wle-9r-zs7" id="pLJ-gA-OJv"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="10" translatesAutoresizingMaskIntoConstraints="NO" id="Wle-9r-zs7">
+                    <rect key="frame" x="0.0" y="108" width="414" height="463"/>
+                </scrollView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kCQ-xa-BRF">
+                    <rect key="frame" x="0.0" y="108" width="414" height="463"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 matches of person in Home found at 3:30pm July 27 of 2019" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOb-we-bRc">
+                    <rect key="frame" x="20" y="651" width="374" height="41"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="kCQ-xa-BRF" firstAttribute="width" secondItem="Wle-9r-zs7" secondAttribute="width" id="28X-Fo-2eO"/>
+                <constraint firstItem="Wle-9r-zs7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="8Nn-H7-Qgy"/>
+                <constraint firstItem="Wle-9r-zs7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="64" id="E1o-v4-ze1"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Wle-9r-zs7" secondAttribute="trailing" id="Iel-bj-Cij"/>
+                <constraint firstItem="kCQ-xa-BRF" firstAttribute="centerX" secondItem="Wle-9r-zs7" secondAttribute="centerX" id="LPh-QS-Udh"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SOb-we-bRc" secondAttribute="trailing" constant="20" id="Q5H-9m-Qbb"/>
+                <constraint firstItem="SOb-we-bRc" firstAttribute="top" secondItem="Wle-9r-zs7" secondAttribute="bottom" constant="80" id="S1n-Mr-0bD"/>
+                <constraint firstItem="kCQ-xa-BRF" firstAttribute="centerY" secondItem="Wle-9r-zs7" secondAttribute="centerY" id="SLT-fQ-xcG"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="SOb-we-bRc" secondAttribute="bottom" constant="170" id="eGw-nw-ug4"/>
+                <constraint firstItem="kCQ-xa-BRF" firstAttribute="height" secondItem="Wle-9r-zs7" secondAttribute="height" id="jIr-Of-JyW"/>
+                <constraint firstItem="SOb-we-bRc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ml4-01-VjL"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="137.68115942028987" y="119.86607142857142"/>
+        </view>
+    </objects>
+</document>

@@ -96,12 +96,7 @@ class PreviousAreasViewController: PullUpController {
     }
     
     private func bindAreaSelection() {
-        
         self.tableView.delegate = self
-//        Observable.collection(from: viewModel.areas).bind(to: tableView.rx.itemSelected) { _ in
-//
-//        }
-//
     }
     
     

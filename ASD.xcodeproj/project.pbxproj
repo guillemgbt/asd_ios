@@ -30,6 +30,9 @@
 		C94FA53A223B3AB3009CBDC6 /* RequestStatus+VariableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94FA538223B3AB3009CBDC6 /* RequestStatus+VariableExtension.swift */; };
 		C94FA53C223B3C5B009CBDC6 /* PreviousAreasViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94FA53B223B3C5B009CBDC6 /* PreviousAreasViewModel.swift */; };
 		C94FA53F223B3CFE009CBDC6 /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94FA53E223B3CFE009CBDC6 /* Area.swift */; };
+		C95191F722DFD26800242F91 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95191F522DFD26800242F91 /* EventDetailViewController.swift */; };
+		C95191F822DFD26800242F91 /* EventDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C95191F622DFD26800242F91 /* EventDetailViewController.xib */; };
+		C95191FA22DFD58900242F91 /* EventDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95191F922DFD58900242F91 /* EventDetailViewModel.swift */; };
 		C9ACDE4A293870FCBDC99553 /* Pods_ASDUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0057CF90BF116AF0FF72CC3 /* Pods_ASDUITests.framework */; };
 		C9BD4C4E2231B6E90014CC9E /* TableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BD4C362231B6E80014CC9E /* TableViewExt.swift */; };
 		C9BD4C4F2231B6E90014CC9E /* TableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BD4C382231B6E80014CC9E /* TableViewCell+Extensions.swift */; };
@@ -116,6 +119,9 @@
 		C94FA538223B3AB3009CBDC6 /* RequestStatus+VariableExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RequestStatus+VariableExtension.swift"; sourceTree = "<group>"; };
 		C94FA53B223B3C5B009CBDC6 /* PreviousAreasViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousAreasViewModel.swift; sourceTree = "<group>"; };
 		C94FA53E223B3CFE009CBDC6 /* Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
+		C95191F522DFD26800242F91 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		C95191F622DFD26800242F91 /* EventDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventDetailViewController.xib; sourceTree = "<group>"; };
+		C95191F922DFD58900242F91 /* EventDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewModel.swift; sourceTree = "<group>"; };
 		C9BD4C362231B6E80014CC9E /* TableViewExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewExt.swift; sourceTree = "<group>"; };
 		C9BD4C382231B6E80014CC9E /* TableViewCell+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		C9BD4C3C2231B6E80014CC9E /* URLResponse+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLResponse+Ext.swift"; sourceTree = "<group>"; };
@@ -214,6 +220,7 @@
 				C914F4C12230F4DF001F66AF /* MapView */,
 				C914F4C92230F9C4001F66AF /* PreviousAreas */,
 				C9EF820A223F1253008DA9C6 /* EventList */,
+				C95191F422DFD23E00242F91 /* EventDetail */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -385,6 +392,16 @@
 				C94FA53E223B3CFE009CBDC6 /* Area.swift */,
 			);
 			path = Area;
+			sourceTree = "<group>";
+		};
+		C95191F422DFD23E00242F91 /* EventDetail */ = {
+			isa = PBXGroup;
+			children = (
+				C95191F522DFD26800242F91 /* EventDetailViewController.swift */,
+				C95191F622DFD26800242F91 /* EventDetailViewController.xib */,
+				C95191F922DFD58900242F91 /* EventDetailViewModel.swift */,
+			);
+			path = EventDetail;
 			sourceTree = "<group>";
 		};
 		C9BD4C332231B5CB0014CC9E /* Utils */ = {
@@ -707,6 +724,7 @@
 				C937646F2230F0360097B0A3 /* LaunchScreen.storyboard in Resources */,
 				C937646C2230F0360097B0A3 /* Assets.xcassets in Resources */,
 				C9EF821A223F1DA6008DA9C6 /* EventTableViewCell.xib in Resources */,
+				C95191F822DFD26800242F91 /* EventDetailViewController.xib in Resources */,
 				C937646A2230F0350097B0A3 /* Main.storyboard in Resources */,
 				C914F4CD2230FA18001F66AF /* PreviousAreasViewController.xib in Resources */,
 				C914F4C52230F512001F66AF /* MapViewController.xib in Resources */,
@@ -848,6 +866,7 @@
 				C9BD4C522231B6E90014CC9E /* UIViewController+Extensions.swift in Sources */,
 				C9E6BD4A2259867D009E8415 /* Message.swift in Sources */,
 				C914F4CC2230FA18001F66AF /* PreviousAreasViewController.swift in Sources */,
+				C95191F722DFD26800242F91 /* EventDetailViewController.swift in Sources */,
 				C9BD4C5D2231B8A80014CC9E /* Utils.swift in Sources */,
 				C9EF8210223F12DC008DA9C6 /* EventListViewModel.swift in Sources */,
 				C9BD4C572231B6E90014CC9E /* VariableExt.swift in Sources */,
@@ -858,6 +877,7 @@
 				C940132122710EC300F340A6 /* FlightControl.swift in Sources */,
 				C9BD4C582231B6E90014CC9E /* UIView+IBExtensions.swift in Sources */,
 				C9BD4C512231B6E90014CC9E /* URLResponse+Ext.swift in Sources */,
+				C95191FA22DFD58900242F91 /* EventDetailViewModel.swift in Sources */,
 				C9BD4C632231B9BC0014CC9E /* UniqueObject.swift in Sources */,
 				C9BD4C6B2231BA150014CC9E /* BaseRepo.swift in Sources */,
 				C9EF8219223F1DA6008DA9C6 /* EventTableViewCell.swift in Sources */,

@@ -92,6 +92,7 @@ class EventListViewController: UIViewController {
         bindTitle()
         bindIsLoading()
         bindEvents()
+        bindEventSelection()
         bindButtonText()
         bindButtonEnabled()
     }
@@ -149,5 +150,18 @@ class EventListViewController: UIViewController {
             }
             .disposed(by: bag)
     }
+    
+    private func bindEventSelection() {
+       self.tableView.delegate = self
+    }
 
+}
+
+extension EventListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let eventID = self.viewModel.events[indexPath.row].getPK()
+        self.navigationController?.pushViewController(EventDetailViewController(eventID: eventID), animated: true)
+    }
+    
 }
